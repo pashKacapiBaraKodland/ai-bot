@@ -1,0 +1,1 @@
+in order for this bot to work🚀, you must first run the file model.py and after it is executed, insert the token into the file main.py, namely in the last line where it says 'token'. and then run the file main.py
