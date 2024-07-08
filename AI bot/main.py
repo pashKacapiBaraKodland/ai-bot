@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from model import car_check 
+from model import confidence_score
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -29,6 +30,8 @@ async def check(ctx):
             await attachment.save(f'images/{file_name}')
             await ctx.send(f'успешно сохранено в images/{file_name}')
             class_name = car_check(attachment.filename)
+            if confidence_score > 30:
+                await ctx.send('я не уверен что это за марка машины на картинке, но постараюсь распознать')
             if class_name == 'tesla':
                 await ctx.send(f'это марка машины: {class_name}.  Tesla Motors — автомобильная компания, основанная в 2003 году и ориентированная на производство премиальных спортивных электромобилей.
 Штаб-квартира компании расположена в Кремниевой долине, штат Калифорния, США. Компания названа в честь всемирно известного учёного-электротехника Николы Тесла. Именно запатентованный Николой Тесла в 1888 году индукционный электродвигатель переменного тока положен в основу конструкции силовых агрегатов, устанавливаемых на автомобили Tesla.
